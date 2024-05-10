@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TerminalResource;
 use App\Models\Terminal;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,12 @@ class TerminalController extends Controller
      */
     public function index()
     {
-        return inertia("Terminals/TerminalIndex");
+        $query = Terminal::query();
+
+        $terminals = $query->paginate(10);
+        return inertia("Terminals/TerminalIndex", [
+            "terminals" => TerminalResource::collection($terminals),
+        ]);
     }
 
     /**

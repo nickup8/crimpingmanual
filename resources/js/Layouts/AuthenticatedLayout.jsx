@@ -116,13 +116,9 @@ export default function AuthenticatedLayout({ user, header, children }) {
                 </div>
             </nav>
 
-            {header && (
-                <header className="bg-white shadow">
-                    <div className="max-w-screen-2xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
-                </header>
-            )}
 
-            <main><div className="py-12">{children}</div></main>
+
+            <main>{children}</main>
         </div>
     );
 }
